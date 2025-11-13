@@ -198,7 +198,6 @@
 #if !defined(IMGUI_IMPL_OPENGL_ES2) && !defined(IMGUI_IMPL_OPENGL_ES3)
 #define IMGUI_IMPL_OPENGL_HAS_EXTENSIONS        // has glGetIntegerv(GL_NUM_EXTENSIONS)
 #define IMGUI_IMPL_OPENGL_MAY_HAVE_POLYGON_MODE // may have glPolygonMode()
-#define IMGUI_IMPL_OPENGL_MAY_REQUIRE_ENABLE_FRAMEBUFFER_SRGB // srgb framebuffers may require to call glEnable(GL_FRAMEBUFFER_SRGB)
 #endif
 
 // Desktop GL 2.1+ and GL ES 3.0+ have glBindBuffer() with GL_PIXEL_UNPACK_BUFFER target.
@@ -463,10 +462,6 @@ void    ImGui_ImplOpenGL3_NewFrame()
 static void ImGui_ImplOpenGL3_SetupRenderState(ImDrawData* draw_data, int fb_width, int fb_height, GLuint vertex_array_object)
 {
     ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();
-
-#ifdef IMGUI_IMPL_OPENGL_MAY_REQUIRE_ENABLE_FRAMEBUFFER_SRGB
-    glEnable(GL_FRAMEBUFFER_SRGB);
-#endif
 
     // Setup render state: alpha-blending enabled, no face culling, no depth testing, scissor enabled, polygon fill
     glEnable(GL_BLEND);
