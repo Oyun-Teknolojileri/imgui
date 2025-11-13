@@ -956,6 +956,22 @@ bool    ImGui_ImplOpenGL3_CreateDeviceObjects()
         "    Out_Color = Frag_Color * texture(Texture, Frag_UV.st);\n"
         "}\n";
 
+    ImGuiIO& io = ImGui::GetIO();
+    if (io.BackendFlags & ImGuiBackendFlags_ToolKitGammaEncode)
+    {
+      fragment_shader_glsl_300_es =               "precision mediump float;\n"
+                                                  "uniform sampler2D Texture;\n"
+                                                  "in vec2 Frag_UV;\n"
+                                                  "in vec4 Frag_Color;\n"
+                                                  "layout (location = 0) out vec4 Out_Color;\n"
+                                                  "void main()\n"
+                                                  "{\n"
+                                                  "    vec4 linear_color = Frag_Color * texture(Texture, Frag_UV.st);\n"
+                                                  "    vec3 srgb_color = pow(linear_color.rgb, vec3(0.454545));\n"
+                                                  "    Out_Color = vec4(srgb_color, linear_color.a);\n"
+                                                  "}\n";
+    }
+
     const GLchar* fragment_shader_glsl_410_core =
         "in vec2 Frag_UV;\n"
         "in vec4 Frag_Color;\n"

@@ -1800,6 +1800,7 @@ enum ImGuiBackendFlags_
     ImGuiBackendFlags_PlatformHasViewports  = 1 << 11,  // Backend Platform supports multiple viewports.
     ImGuiBackendFlags_HasMouseHoveredViewport=1 << 12,  // Backend Platform supports calling io.AddMouseViewportEvent() with the viewport under the mouse. IF POSSIBLE, ignore viewports with the ImGuiViewportFlags_NoInputs flag (Win32 backend, GLFW 3.30+ backend can do this, SDL backend cannot). If this cannot be done, Dear ImGui needs to use a flawed heuristic to find the viewport under.
     ImGuiBackendFlags_HasParentViewport     = 1 << 13,  // Backend Platform supports honoring viewport->ParentViewport/ParentViewportId value, by applying the corresponding parent/child relation at the Platform level.
+    ImGuiBackendFlags_ToolKitGammaEncode    = 1 << 14,  // ToolKit requires opengl es 3.0 to apply gamma encoding in shader when this flag is set.
 };
 
 // Enumeration for PushStyleColor() / PopStyleColor()
