@@ -876,7 +876,7 @@ bool    ImGui_ImplOpenGL3_CreateDeviceObjects()
         "void main()\n"
         "{\n"
         "    Frag_UV = UV;\n"
-        "    Frag_Color = vec4(pow(Color.rgb, vec3(2.2)), Color.a);\n"
+        "    Frag_Color = Color;\n"
         "    gl_Position = ProjMtx * vec4(Position.xy,0,1);\n"
         "}\n";
 
@@ -890,7 +890,7 @@ bool    ImGui_ImplOpenGL3_CreateDeviceObjects()
         "void main()\n"
         "{\n"
         "    Frag_UV = UV;\n"
-        "    Frag_Color = vec4(pow(Color.rgb, vec3(2.2)), Color.a);\n"
+        "    Frag_Color = Color;\n"
         "    gl_Position = ProjMtx * vec4(Position.xy,0,1);\n"
         "}\n";
 
@@ -919,7 +919,7 @@ bool    ImGui_ImplOpenGL3_CreateDeviceObjects()
         "void main()\n"
         "{\n"
         "    Frag_UV = UV;\n"
-        "    Frag_Color = vec4(pow(Color.rgb, vec3(2.2)), Color.a);\n"
+        "    Frag_Color = Color;\n"
         "    gl_Position = ProjMtx * vec4(Position.xy,0,1);\n"
         "}\n";
 
