@@ -19,7 +19,11 @@ layout(location = 0) out struct {
 
 void main()
 {
-    Out.Color = aColor;
+    // ImGui delivers colors in sRGB space. Decode to linear here so blending
+    // happens in linear space. Mirrors vertex_shader_glsl_300_es in the OpenGL3
+    // backend. The matching sRGB->linear encode (if the backbuffer is non-sRGB)
+    // lives in glsl_shader_gamma.frag.
+    Out.Color = vec4(pow(aColor.rgb, vec3(2.2)), aColor.a);
     Out.UV = aUV;
     gl_Position = vec4(aPos * pc.uScale + pc.uTranslate, 0, 1);
 }
